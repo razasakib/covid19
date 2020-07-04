@@ -1,0 +1,56 @@
+
+ <div class="ui inverted dimmer" [class.active]="loading">
+ 
+    <div class="ui text loader">Loading</div>
+  </div>
+<div class="jumbotron bg-white text-center">
+    <h1 class="display-4">Corona Covid19 Tracker!!</h1>
+    <hr>
+    <app-dashboard-card [totalConfirmed]='totalConfirmed' [totalDeaths]='totalDeaths' [totalRecovered]='totalRecovered'
+        [totalActive]='totalActive'></app-dashboard-card>
+</div>
+
+<div class="ui form">
+    <div class="inline fields">
+        <h2>Select Case Type:</h2>
+        <div class="field m-3">
+            <div class="ui radio checkbox">
+                <input type="radio" value="c" #c (click)="updateChart(c)" name="caseType" checked="" id="c">
+                <label for="c" >Confirmed</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" #d value="d" (click)="updateChart(d)" name="caseType" id="d">
+                <label for="d">Death</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" value="r" #r (click)="updateChart(r)" name="caseType" id="r">
+                <label for="r">Recovered</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" value="a" #a (click)="updateChart(a)" name="caseType" id="a">
+                <label for="a">Active</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row" id="chart">
+    <div class="col">
+        <google-chart [type]="chart.PieChart"  [options]="chart.options" style="width:100%" [height]="chart.height"  [data]="dataTable"></google-chart>
+    </div>
+    <div class="col">
+        <google-chart [type]="chart.ColumnChart" [options]="chart.options" style="width:100%" [height]="chart.height" [data]="dataTable"></google-chart>
+    </div>
+    <div class="col">
+        <google-chart [type]="chart.LineChart" [options]="chart.options" style="width:100%" [height]="chart.height" [data]="dataTable"></google-chart>
+    </div>
+</div>

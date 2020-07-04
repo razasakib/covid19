@@ -1,0 +1,17 @@
+#confirm{
+    background-color: darkorange;
+    box-shadow: 5px 10px #888888;
+    
+}
+#deaths{
+    background-color: red;
+    box-shadow: 5px 10px #888888;
+}
+#recovered{
+    background-color: yellowgreen;
+    box-shadow: 5px 10px #888888;
+}
+#active{
+    background-color: violet;
+    box-shadow: 5px 10px #888888;
+}

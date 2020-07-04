@@ -1,0 +1,49 @@
+
+ <div class="ui inverted dimmer" [class.active]="loading">
+ 
+   <div class="ui text loader">Loading</div>
+ </div>
+
+<div class="jumbotron bg-white text-center">
+    <h1 class="display-4">Corona Covid19 Tracker Country wise!</h1>
+    <hr>
+    <div class="max-auto" style="margin-left: 35%;">
+        <div class="form-group col-lg-5 max-auto">
+          <label for="c">Select Country</label>
+          <select name="" class="form-control" id="c" #input (change)="updateData(input.value)">
+            <option value="">--Select Country--</option> 
+            <option value={{con}} *ngFor='let con of countries'>{{con}}</option>
+          </select>
+        </div>
+    </div>
+    <app-dashboard-card [totalConfirmed]='totalConfirmed' [totalDeaths]='totalDeaths' 
+    [totalRecovered]='totalRecovered' [totalActive]='totalActive'></app-dashboard-card>
+</div>
+<div *ngIf="selectedCountryData?.length;else no_data_templ">
+    
+<div>
+   <table class="table table-hover" id="t1" border="1" >
+       <thead>
+           <tr class="btn-info ">
+               <th>Sno.</th>
+               <th>Date.</th>
+               <th>Cases.</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor="let cs of selectedCountryData;index as i">
+               <td>{{i+1}}</td>
+               <td>{{cs.date|date}}</td>
+               <td>{{cs.cases}}</td>
+           </tr>
+       </tbody>
+   </table>
+    
+</div>
+</div>
+<div id="template">
+    <ng-template #no_data_templ >
+        <h3>No Data found...</h3>
+    </ng-template>
+</div>
+    
